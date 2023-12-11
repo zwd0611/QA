@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>粄條商城QA</title>
+</head>
+
+<body>
+    <h1>板條商城QA</h1>
+<p>例如查詢((什麼是粄條/有什麼口味/最近有什麼優惠)</p>
+    <input type="text" id="query" placeholder="輸入問題">
+    <button onclick="search()">Search</button>
+    <p id="result"></p>
+
+
+
+    <script>
+        function search() {
+            var query = document.getElementById('query').value;
+            var url = 'https://script.google.com/macros/s/AKfycby4xK6k4fAgptBk-5ErmAfE5uVFSmpID9cOou8BeUlRkF1LDnVTs223QmPUE1tXXhSjlA/exec?q=' + encodeURIComponent(query);
+
+            fetch(url)
+                .then(response => response.text())
+                .then(text => document.getElementById('result').innerText = text)
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+
+</body>
+</html>
